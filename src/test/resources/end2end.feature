@@ -1,8 +1,12 @@
-Feature: automated end2end test
-  Description: The purpose of test  is end to end test site "https://practice.bpbonline.com/"
+Feature: Create Account
+  As a new user
+  I want to create an account on the webpage
+  So that I can access the website's features
 
-  # The first example has two steps
-  Scenario: user will go to loginPage and sign to  page
-    Given user is on Homepage
-    When user clicks on myAccount button
-
+  Scenario: Create a new account
+    Given I am on the homepage
+    When I click button myAccount and redirect to login page
+    When I click button Continue and redirect to create_account page
+    And I enter input forms for My Account Information
+    And I submit the registration form
+    Then I should see a successful registration message

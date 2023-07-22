@@ -1,0 +1,134 @@
+Index: src/main/java/org/example/pages/HomePage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.pages;\r\n\r\nimport org.openqa.selenium.WebDriver;\r\nimport org.openqa.selenium.WebElement;\r\nimport org.openqa.selenium.support.FindBy;\r\nimport org.openqa.selenium.support.PageFactory;\r\n\r\npublic class HomePage {\r\n    final WebDriver driver;\r\n\r\n    //constructor\r\n    public HomePage(WebDriver driver) {\r\n        this.driver = driver;\r\n        PageFactory.initElements(driver, this);\r\n    }\r\n\r\n    @FindBy(xpath = \"//*[@id=\\\"tdb3\\\"]\")\r\n    WebElement myAccount;\r\n\r\n    public void goToHomePage() {\r\n        driver.get(\"https://practice.bpbonline.com/\");\r\n    }\r\n\r\n    public void myAccountClick() {\r\n        myAccount.click();\r\n    }\r\n\r\n    public void closeDriver() {\r\n        driver.quit();\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/pages/HomePage.java b/src/main/java/org/example/pages/HomePage.java
+--- a/src/main/java/org/example/pages/HomePage.java	
++++ b/src/main/java/org/example/pages/HomePage.java	
+@@ -1,5 +1,6 @@
+ package org.example.pages;
+ 
++import org.asynchttpclient.util.Assertions;
+ import org.openqa.selenium.WebDriver;
+ import org.openqa.selenium.WebElement;
+ import org.openqa.selenium.support.FindBy;
+@@ -14,15 +15,27 @@
+         PageFactory.initElements(driver, this);
+     }
+ 
+-    @FindBy(xpath = "//*[@id=\"tdb3\"]")
+-    WebElement myAccount;
++    @FindBy(id = "tdb3")
++    WebElement myAccountButton;
++
++    @FindBy(name = "email_address")
++    WebElement email_send;
+ 
+     public void goToHomePage() {
+         driver.get("https://practice.bpbonline.com/");
+     }
+ 
+     public void myAccountClick() {
+-        myAccount.click();
++        myAccountButton.click();
++    }
++
++
++    public void emailSend() {
++        email_send.sendKeys("qwery@wp.pl");
++
++        email_send.submit();
++
++
+     }
+ 
+     public void closeDriver() {
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"c5aea066-4325-4a43-a67e-c2f996d36c46\" name=\"Changes\" comment=\"page_object_model\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/chromedriver.exe\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/runners/TestRunner.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/stepDefinitions/Steps.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/resources/end2end.feature\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gitignore\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gitignore\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/Main.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/managers/PageObjectManager.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/managers/PageObjectManager.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/pages/HomePage.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/pages/HomePage.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JUnit5 Test Class\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <excluded-from-favorite>\r\n      <branch-storage>\r\n        <map>\r\n          <entry type=\"LOCAL\">\r\n            <value>\r\n              <list>\r\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"master\" />\r\n              </list>\r\n            </value>\r\n          </entry>\r\n        </map>\r\n      </branch-storage>\r\n    </excluded-from-favorite>\r\n    <favorite-branches>\r\n      <branch-storage>\r\n        <map>\r\n          <entry type=\"LOCAL\">\r\n            <value>\r\n              <list>\r\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"page_object_model_and_end2end\" />\r\n              </list>\r\n            </value>\r\n          </entry>\r\n        </map>\r\n      </branch-storage>\r\n    </favorite-branches>\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"importingSettings\">\r\n      <MavenImportingSettings>\r\n        <option name=\"workspaceImportEnabled\" value=\"true\" />\r\n      </MavenImportingSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2SqFLL21pAy90iwJ7hZu2aNcwE8\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary\": \"JUnit5\",\r\n    \"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5\": \"\",\r\n    \"last_opened_file_path\": \"C:/Disk D/Java-Selenium/Selenium_Java_Practice_bpb/src/test/java\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Disk D\\Java-Selenium\\Selenium_Java_Practice_bpb\\src\\test\\java\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.Recents.Supers\">\r\n      <recent name=\"\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.RecentsKey\">\r\n      <recent name=\"org.example\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"TestRunner\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Selenium_Java_Practice_bpb\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"runners.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"runners\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"runners.TestRunner\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.TestRunner\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"c5aea066-4325-4a43-a67e-c2f996d36c46\" name=\"Changes\" comment=\"\" />\r\n      <created>1689866149139</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1689866149139</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Master_WevDriver_Main\" />\r\n    <MESSAGE value=\"page_object_model\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"page_object_model\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,16 +5,10 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="c5aea066-4325-4a43-a67e-c2f996d36c46" name="Changes" comment="page_object_model">
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/chromedriver.exe" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/runners/TestRunner.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/stepDefinitions/Steps.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/resources/end2end.feature" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/managers/PageObjectManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/managers/PageObjectManager.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pages/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pages/HomePage.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/test/java/stepDefinitions/Steps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepDefinitions/Steps.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -131,6 +125,14 @@
+       <option name="presentableId" value="Default" />
+       <updated>1689866149139</updated>
+     </task>
++    <task id="LOCAL-00001" summary="page_object_model">
++      <created>1689876791645</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1689876791645</updated>
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+   <component name="VcsManagerConfiguration">
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>target/\r\n!.mvn/wrapper/maven-wrapper.jar\r\n!**/src/main/**/target/\r\n!**/src/test/**/target/\r\n\r\n### IntelliJ IDEA ###\r\n.idea/modules.xml\r\n.idea/jarRepositories.xml\r\n.idea/compiler.xml\r\n.idea/libraries/\r\n*.iws\r\n*.iml\r\n*.ipr\r\n\r\n### Eclipse ###\r\n.apt_generated\r\n.classpath\r\n.factorypath\r\n.project\r\n.settings\r\n.springBeans\r\n.sts4-cache\r\n\r\n### NetBeans ###\r\n/nbproject/private/\r\n/nbbuild/\r\n/dist/\r\n/nbdist/\r\n/.nb-gradle/\r\nbuild/\r\n!**/src/main/**/build/\r\n!**/src/test/**/build/\r\n\r\n### VS Code ###\r\n.vscode/\r\n\r\n### Mac OS ###\r\n.DS_Store
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+--- a/.gitignore	
++++ b/.gitignore	
+@@ -4,6 +4,7 @@
+ !**/src/test/**/target/
+ 
+ ### IntelliJ IDEA ###
++/ .idea
+ .idea/modules.xml
+ .idea/jarRepositories.xml
+ .idea/compiler.xml
+Index: src/test/java/stepDefinitions/Steps.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package stepDefinitions;\r\n\r\nimport io.cucumber.java.en.Given;\r\nimport io.cucumber.java.en.When;\r\nimport org.example.managers.PageObjectManager;\r\nimport org.example.pages.HomePage;\r\nimport org.openqa.selenium.WebDriver;\r\nimport org.openqa.selenium.chrome.ChromeDriver;\r\nimport org.openqa.selenium.chrome.ChromeOptions;\r\n\r\nimport java.util.concurrent.TimeUnit;\r\n\r\npublic class Steps {\r\n    WebDriver driver;\r\n    HomePage homePage;\r\n    PageObjectManager pageObjectManager;\r\n\r\n    @Given(\"user is on Homepage\")\r\n    public void user_is_on_homepage() {\r\n        // Write code here that turns the phrase above into concrete actions\r\n        ChromeOptions ops = new ChromeOptions();\r\n        ops.addArguments(\"--remote-allow-origins=*\");\r\n        System.setProperty(\"webdriver.chrome.driver\", \"C:\\\\Disk D\\\\Java-Selenium\\\\Selenium_Java_Practice_bpb\\\\src\\\\main\\\\resources\\\\chromedriver.exe\");\r\n        WebDriver driver = new ChromeDriver(ops);\r\n        driver.manage().window().maximize();\r\n        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);\r\n        pageObjectManager = new PageObjectManager(driver);\r\n        homePage = pageObjectManager.getHomePage();\r\n\r\n\r\n    }\r\n    @When(\"user clicks on myAccount button\")\r\n    public void user_clicks_on_my_account_button() {\r\n        // Write code here that turns the phrase above into concrete actions\r\n        //homePage.myAccountClick();\r\n        homePage.closeDriver();\r\n    }\r\n\r\n}\r\n
+===================================================================
+diff --git a/src/test/java/stepDefinitions/Steps.java b/src/test/java/stepDefinitions/Steps.java
+--- a/src/test/java/stepDefinitions/Steps.java	
++++ b/src/test/java/stepDefinitions/Steps.java	
+@@ -26,13 +26,15 @@
+         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+         pageObjectManager = new PageObjectManager(driver);
+         homePage = pageObjectManager.getHomePage();
++        homePage.myAccountClick();
+ 
+ 
+     }
+     @When("user clicks on myAccount button")
+     public void user_clicks_on_my_account_button() {
+         // Write code here that turns the phrase above into concrete actions
+-        //homePage.myAccountClick();
++
++        //homePage.emailSend();
+         homePage.closeDriver();
+     }
+ 
