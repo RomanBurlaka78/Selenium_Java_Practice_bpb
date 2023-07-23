@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.managers.PageObjectManager;
+import org.example.pages.CreateAccountPage;
 import org.example.pages.HomePage;
 import org.example.pages.LoginPage;
 import org.junit.jupiter.api.Assertions;
@@ -21,6 +22,7 @@ public class Steps {
     WebDriver driver;
     HomePage homePage;
     LoginPage loginPage;
+    CreateAccountPage createAccountPage;
     PageObjectManager pageObjectManager;
 
     @Given("I am on the homepage")
@@ -55,18 +57,36 @@ public class Steps {
     @And("I enter input forms for My Account Information")
     public void i_enter_input_forms_for_my_account_information() {
         // Write code here that turns the phrase above into concrete actions
-
+        createAccountPage = pageObjectManager.getCreateAccountPage();
+        createAccountPage.inputGenderMethod();
+        createAccountPage.setInputFirstname("Robert");
+        createAccountPage.setInputLastname("Kowalski");
+        createAccountPage.setDateOfBirth("05/07/1988");
+        createAccountPage.setEmailAddress("qwery3@wp.pl");
+        createAccountPage.setCompanyName("myCompany");
+        createAccountPage.setStreetAddress("Warszawska");
+        createAccountPage.setPostCode(2344);
+        createAccountPage.setCity("Warszawa");
+        createAccountPage.setState("Mazowieckie");
+        createAccountPage.setCountry();
+        createAccountPage.setTelefone(232312222);
+        createAccountPage.setFax(234422445);
+        createAccountPage.setNews_letter();
+        createAccountPage.setPassword("123Wqq122");
+        createAccountPage.setConfirmation("123Wqq122");
     }
 
     @And("I submit the registration form")
     public void i_submit_the_registration_form() {
         // Write code here that turns the phrase above into concrete actions
+        createAccountPage.setSubmit_form();
 
     }
 
     @Then("I should see a successful registration message")
     public void i_should_see_a_successful_registration_message() {
         // Write code here that turns the phrase above into concrete actions
+        createAccountPage.setSuccess_message();
         homePage.closeDriver();
 
     }

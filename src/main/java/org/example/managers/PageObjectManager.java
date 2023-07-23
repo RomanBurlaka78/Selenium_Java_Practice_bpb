@@ -1,14 +1,16 @@
 package org.example.managers;
 
+import org.example.pages.CreateAccountPage;
 import org.example.pages.HomePage;
 import org.example.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 
 public class PageObjectManager {
+
     private HomePage homePage;
     private LoginPage loginPage;
     private WebDriver driver;
-
+    private CreateAccountPage createAccountPage ;
 
 
     //constructors
@@ -30,6 +32,10 @@ public class PageObjectManager {
     }
     public LoginPage getLoginPage() {
         return (loginPage == null) ? loginPage = new LoginPage(driver) : loginPage;
+    }
+
+    public  CreateAccountPage getCreateAccountPage() {
+        return  (createAccountPage == null) ? createAccountPage = new CreateAccountPage(driver): createAccountPage;
     }
 
 }
