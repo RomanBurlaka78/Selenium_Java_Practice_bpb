@@ -1,5 +1,6 @@
 package org.example.managers;
 
+import org.example.pages.AccountPage;
 import org.example.pages.CreateAccountPage;
 import org.example.pages.HomePage;
 import org.example.pages.LoginPage;
@@ -11,6 +12,7 @@ public class PageObjectManager {
     private LoginPage loginPage;
     private WebDriver driver;
     private CreateAccountPage createAccountPage ;
+    private AccountPage accountPage;
 
 
     //constructors
@@ -22,6 +24,9 @@ public class PageObjectManager {
     }
     public PageObjectManager(LoginPage loginPage) {
         this.loginPage = loginPage;
+    }
+    public PageObjectManager(AccountPage accountPage) {
+        this.accountPage = accountPage;
     }
 
 
@@ -36,6 +41,9 @@ public class PageObjectManager {
 
     public  CreateAccountPage getCreateAccountPage() {
         return  (createAccountPage == null) ? createAccountPage = new CreateAccountPage(driver): createAccountPage;
+    }
+    public  AccountPage getAccountPage() {
+        return  (accountPage == null) ? accountPage = new AccountPage(driver): accountPage;
     }
 
 }

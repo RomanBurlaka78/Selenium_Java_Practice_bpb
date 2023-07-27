@@ -51,6 +51,8 @@ public class CreateAccountPage {
     WebElement submit_form;
     @FindBy(xpath = "//*[@id=\"bodyContent\"]/h1")
     WebElement success_message;
+    @FindBy(xpath = "//a[@id=\"tdb5\"]")
+    WebElement continue_button;
 
 
     public void inputGenderMethod() {
@@ -125,6 +127,11 @@ public class CreateAccountPage {
     public void setSuccess_message() {
         success_message.getText();
         System.out.println(success_message.getText());
+
+    }
+
+    public  void click_Continue_button() {
+        continue_button.click();
 
     }
 }

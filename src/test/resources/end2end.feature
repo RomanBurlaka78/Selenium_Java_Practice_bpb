@@ -10,3 +10,6 @@ Feature: Create Account
     And I enter input forms for My Account Information
     And I submit the registration form
     Then I should see a successful registration message
+    Then I click button Continue and redirect to account user page
+    Then I click button Log off and user  log out  from account page
+    Then I click button Continue and redirect to Home  page

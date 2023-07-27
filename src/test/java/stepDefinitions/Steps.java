@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.managers.PageObjectManager;
+import org.example.pages.AccountPage;
 import org.example.pages.CreateAccountPage;
 import org.example.pages.HomePage;
 import org.example.pages.LoginPage;
@@ -23,6 +24,7 @@ public class Steps {
     HomePage homePage;
     LoginPage loginPage;
     CreateAccountPage createAccountPage;
+    AccountPage accountPage;
     PageObjectManager pageObjectManager;
 
     @Given("I am on the homepage")
@@ -62,7 +64,7 @@ public class Steps {
         createAccountPage.setInputFirstname("Robert");
         createAccountPage.setInputLastname("Kowalski");
         createAccountPage.setDateOfBirth("05/07/1988");
-        createAccountPage.setEmailAddress("qwery3@wp.pl");
+        createAccountPage.setEmailAddress("qwery11@wp.pl");
         createAccountPage.setCompanyName("myCompany");
         createAccountPage.setStreetAddress("Warszawska");
         createAccountPage.setPostCode(2344);
@@ -87,9 +89,28 @@ public class Steps {
     public void i_should_see_a_successful_registration_message() {
         // Write code here that turns the phrase above into concrete actions
         createAccountPage.setSuccess_message();
-        homePage.closeDriver();
+        //homePage.closeDriver();
 
     }
+
+    @Then("I click button Continue and redirect to account user page")
+    public void i_click_button_continue_and_redirect_to_account_user_page() {
+        createAccountPage.click_Continue_button();
+
+    }
+    @Then("I click button Log off and user  log out  from account page")
+    public void i_click_button_log_off_and_user_log_out_from_account_page() {
+        accountPage = pageObjectManager.getAccountPage();
+        accountPage.clickLogOff();
+
+    }
+    @Then("I click button Continue and redirect to Home  page")
+    public void i_click_button_continue_and_redirect_to_home_page() {
+
+        accountPage.clickLogOff();
+
+    }
+
 
 
 }
