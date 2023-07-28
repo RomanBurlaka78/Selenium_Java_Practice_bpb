@@ -7,6 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class HomePage {
     final WebDriver driver;
 
@@ -16,8 +19,12 @@ public class HomePage {
         PageFactory.initElements(driver, this);
     }
 
+    public WebDriver getDriver() {
+        return driver;
+    }
+
     //Locators html elements
-    @FindBy(id = "tdb3")
+    @FindBy(xpath = "//a[@id=\"tdb3\"]")
     WebElement myAccount;
 
 
@@ -30,9 +37,7 @@ public class HomePage {
     }
 
 
-//    public void closeDriver() {
-//        driver.quit();
-//    }
+
 
 
 }

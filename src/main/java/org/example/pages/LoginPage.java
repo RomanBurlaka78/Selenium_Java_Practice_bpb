@@ -16,8 +16,30 @@ public class LoginPage {
     @FindBy(id = "tdb2")
     WebElement createAccount;
 
+    @FindBy(xpath = "//input[@name=\"email_address\"]")
+    WebElement emailLogin;
+
+    @FindBy(xpath = "//input[@name=\"password\"]")
+    WebElement paswordLogin;
+
+    @FindBy(xpath = "//button[@id=\"tdb1\"]")
+    WebElement clickSubmit;
+
     public void myAccountCreate() {
         createAccount.click();
     }
+
+    public void inputEmail(String email) {
+        emailLogin.sendKeys(email);
+    }
+
+    public void inputPassword(String password) {
+        paswordLogin.sendKeys(password);
+    }
+
+    public void clickSubmitForm() {
+        clickSubmit.click();
+    }
+
 
 }

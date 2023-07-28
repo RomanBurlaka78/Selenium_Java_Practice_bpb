@@ -42,17 +42,17 @@ public class CreateAccountPage {
     @FindBy(name = "fax")
     WebElement fax;
     @FindBy(xpath = "//*[@id=\"bodyContent\"]/form/div/div[5]/table/tbody/tr[3]/td[2]/input")
-    WebElement news_letter;
+    WebElement newsLetter;
     @FindBy(name = "password")
     WebElement password;
     @FindBy(name = "confirmation")
     WebElement confirmation;
     @FindBy(id = "tdb4")
-    WebElement submit_form;
+    WebElement submitForm;
     @FindBy(xpath = "//*[@id=\"bodyContent\"]/h1")
-    WebElement success_message;
+    WebElement successMessage;
     @FindBy(xpath = "//a[@id=\"tdb5\"]")
-    WebElement continue_button;
+    WebElement continueButton;
 
 
     public void inputGenderMethod() {
@@ -108,8 +108,8 @@ public class CreateAccountPage {
         fax.sendKeys(String.valueOf(fax_name));
     }
 
-    public void setNews_letter() {
-        news_letter.click();
+    public void setNewsLetter() {
+        newsLetter.click();
     }
 
     public void setPassword(String password_set) {
@@ -120,18 +120,18 @@ public class CreateAccountPage {
         confirmation.sendKeys(confirmation_set);
     }
 
-    public void setSubmit_form() {
-        submit_form.click();
+    public void setSubmitForm() {
+        submitForm.click();
     }
 
-    public void setSuccess_message() {
-        success_message.getText();
-        System.out.println(success_message.getText());
+    public void setSuccessMessage() {
+        successMessage.getText();
+        System.out.println(successMessage.getText());
 
     }
 
-    public  void click_Continue_button() {
-        continue_button.click();
+    public  void clickContinueButton() {
+        continueButton.click();
 
     }
 }
